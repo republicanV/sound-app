@@ -41,6 +41,7 @@
     "react-dom": "^16.8.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "spotify-web-api-node": "^4.0.0"
   }
 }
