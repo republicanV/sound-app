@@ -38,6 +38,8 @@
   },
   "dependencies": {
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6"
   }
 }
