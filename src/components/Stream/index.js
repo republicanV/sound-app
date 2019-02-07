@@ -1,5 +1,7 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
+import * as actions from '../../actions';
 import Stream from './presenter';
 
 function mapStateToProps(state, props) {
@@ -9,4 +11,10 @@ function mapStateToProps(state, props) {
     }
 }
 
-export default connect(mapStateToProps)(Stream);
+function mapDispatchToProps(dispatch) {
+    return {
+        onAuth: bindActionCreators(actions.auth, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stream);
