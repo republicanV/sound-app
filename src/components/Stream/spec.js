@@ -1,5 +1,5 @@
 import React from "react";
-import Stream from './Stream';
+import Stream from './presenter';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow, configure } from 'enzyme';
 
@@ -18,3 +18,4 @@ describe('Stream', () => {
     });
 
 });
+
