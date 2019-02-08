@@ -35,3 +35,5 @@ class Callback extends React.Component {
         return <div><p>This page should close soon.</p></div>;
     }
 }
+
+export default Callback;

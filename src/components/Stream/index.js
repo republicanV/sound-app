@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as actions from '../../actions';
 import Stream from './presenter';
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
     const tracks = state.track;
     return {
         tracks

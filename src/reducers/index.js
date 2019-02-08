@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { routerReducer } from "react-router-redux/src";
+import { connectRouter } from 'connected-react-router';
 import track from './track';
 
-export default combineReducers({
-   track,
-   routing: routerReducer
+export default (history) => combineReducers({
+   router: connectRouter(history),
+   track
 });
