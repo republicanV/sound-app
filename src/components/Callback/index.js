@@ -1,4 +1,5 @@
 import React from 'react';
+import QueryString from 'query-string'
 
 class Callback extends React.Component {
 
