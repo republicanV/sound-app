@@ -47,7 +47,7 @@ class Stream extends React.Component {
                 <div>
                     {
                         tracks.map((track, key) => {
-                            return <div className="track" key={key}>{ track.title }</div>;
+                            return <div className="track" key={key}>{ track.track.name }</div>;
                         })
                     }
                 </div>

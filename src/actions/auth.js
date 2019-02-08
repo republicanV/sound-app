@@ -12,6 +12,7 @@ export function auth() {
 
     return function (dispatch) {
         dispatch(fetchMe(window.spotifyApi));
+        dispatch(fetchStream(window.spotifyApi));
     };
 
 }
@@ -24,5 +25,16 @@ function fetchMe(spotifyApi) {
             }, function (error) {
                 console.error(error);
             });
+    }
+}
+
+function fetchStream(spotifyApi) {
+    return function (dispatch) {
+        spotifyApi.getMySavedTracks()
+            .then(function (data) {
+                dispatch(setTracks(data.body.items))
+            }, function (error) {
+                console.error(error);
+            })
     }
 }
