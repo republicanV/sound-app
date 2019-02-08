@@ -1,7 +1,25 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { SCOPES, STATE } from "../../constants/auth";
 
 class Stream extends React.Component {
+
+    componentDidUpdate() {
+        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+
+        if(!audioElement) {
+            return;
+        }
+
+        const { activeTrack } = this.props;
+
+        if(activeTrack) {
+            audioElement.play();
+        } else {
+            audioElement.pause();
+        }
+
+    }
 
     openAuthWindow(onAuth) {
         let authorizeUrl = window.spotifyApi.createAuthorizeURL(SCOPES, STATE, true);
@@ -33,13 +51,16 @@ class Stream extends React.Component {
     }
 
     render() {
-        const { user, tracks = [], onAuth } = this.props;
+        const { user, tracks = [], activeTrack, onAuth, onPlay } = this.props;
+
+        console.log('tracks: ', tracks);
+        console.log('this.props: ', this.props);
         return (
             <div>
                 <div>
                     {
                         user ?
-                            <div>{ user.display_name }</div> :
+                            <div><span>My username: </span> { user.display_name }</div> :
                             <button onClick={() => this.openAuthWindow(onAuth)} type="button">Login</button>
                     }
                 </div>
@@ -47,10 +68,21 @@ class Stream extends React.Component {
                 <div>
                     {
                         tracks.map((track, key) => {
-                            return <div className="track" key={key}>{ track.track.name }</div>;
+                            return (
+                                <div className="track" key={key}>
+                                    { key + 1 } { track.track.name }
+                                    &nbsp;<button type="button" onClick={() => onPlay(track)}>Play</button>
+                                </div>
+                            );
                         })
                     }
                 </div>
+                {
+                    activeTrack ?
+                        <div className="active-track">
+                            <audio id="audio" controls ref="audio" src={activeTrack.track.preview_url}/>
+                        </div> : null
+                }
             </div>
         );
     }

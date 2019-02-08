@@ -15,17 +15,7 @@ window.spotifyApi = new SpotifyWebApi({
     redirectUri: REDIRECT_URI
 });
 
-// const tracks = [
-//     {
-//         title: 'Some track'
-//     },
-//     {
-//         title: 'Some other track'
-//     }
-// ];
-
 const store = configureStore();
-// store.dispatch(actions.setTracks(tracks));
 
 ReactDOM.render(
     <Provider store={store}>
